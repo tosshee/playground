@@ -1,0 +1,43 @@
+@startuml
+
+start
+
+:Idle at First Floor;
+repeat
+    :Check for External Button Press;
+    if (External Up Pressed at First Floor?) then (yes)
+        :Open Doors;
+        stop
+    else (no)
+    endif
+    
+    if (External Up Pressed at Second Floor?) then (yes)
+        :Move Elevator Up;
+        ->Open Doors at Second Floor;
+        stop
+    else (no)
+    endif
+repeat while (Stay at First Floor?)
+->Idle at Second Floor;
+
+:Idle at Second Floor;
+repeat
+    :Check for External Button Press;
+    if (External Down Pressed at Second Floor?) then (yes)
+        :Open Doors;
+        stop
+    else (no)
+    endif
+    
+    if (External Down Pressed at First Floor?) then (yes)
+        :Move Elevator Down;
+        ->Open Doors at First Floor;
+        stop
+    else (no)
+    endif
+repeat while (Stay at Second Floor?)
+->Idle at First Floor;
+
+stop
+
+@enduml

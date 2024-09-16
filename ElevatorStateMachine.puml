@@ -1,0 +1,38 @@
+@startuml
+
+[*] --> IdleAtFirstFloor
+[*] --> IdleAtSecondFloor
+
+state "Idle at First Floor" as IdleAtFirstFloor {
+    [*] --> DoorsClosed1
+    DoorsClosed1 : Door is closed
+    DoorsClosed1 --> OpenAtFirstFloor : External Up Pressed at First Floor
+    DoorsClosed1 --> MovingUp : External Up Pressed at Second Floor
+}
+
+state "Idle at Second Floor" as IdleAtSecondFloor {
+    [*] --> DoorsClosed2
+    DoorsClosed2 : Door is closed
+    DoorsClosed2 --> OpenAtSecondFloor : External Down Pressed at Second Floor
+    DoorsClosed2 --> MovingDown : External Down Pressed at First Floor
+}
+
+state "Open at First Floor" as OpenAtFirstFloor {
+    OpenAtFirstFloor --> IdleAtFirstFloor : Internal Close Pressed
+    OpenAtFirstFloor --> MovingUp : Internal 2nd Floor Button Pressed
+}
+
+state "Open at Second Floor" as OpenAtSecondFloor {
+    OpenAtSecondFloor --> IdleAtSecondFloor : Internal Close Pressed
+    OpenAtSecondFloor --> MovingDown : Internal 1st Floor Button Pressed
+}
+
+state "Moving Up" as MovingUp {
+    MovingUp --> OpenAtSecondFloor : Arrive 2nd Floor
+}
+
+state "Moving Down" as MovingDown {
+    MovingDown --> OpenAtFirstFloor : Arrive 1st Floor
+}
+
+@enduml

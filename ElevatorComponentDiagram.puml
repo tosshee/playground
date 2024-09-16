@@ -1,0 +1,30 @@
+@startuml
+
+package "Elevator Simulation Software" {
+
+    component "Elevator Control System" as ECS {
+        component "State Management" as SM
+        component "Event Handling" as EH
+    }
+
+    component "User Interface" as UI {
+        component "Internal Button Panel" as IBP
+        component "External Button Panel" as EBP
+        component "Display System" as DS
+    }
+
+    component "Elevator Motor Control" as EMC
+    component "Door Control System" as DCS
+    component "Sensor System" as Sensors
+
+    UI --> ECS : Sends button events
+    ECS --> EMC : Controls motor
+    ECS --> DCS : Controls doors
+    ECS --> UI : Updates display
+    Sensors --> ECS : Sends floor arrival
+
+}
+
+@enduml
+
+

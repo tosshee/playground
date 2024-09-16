@@ -1,0 +1,20 @@
+@startuml
+
+left to right direction
+actor Passenger
+actor "Maintenance Personnel"
+
+usecase "Call Elevator" as UC1
+usecase "Select Floor" as UC2
+usecase "Open/Close Door" as UC3
+usecase "Emergency Stop" as UC4
+usecase "Perform Maintenance" as UC5
+
+Passenger --> UC1
+Passenger --> UC2
+Passenger --> UC3
+Passenger --> UC4
+"Maintenance Personnel" --> UC4
+"Maintenance Personnel" --> UC5
+
+@enduml
