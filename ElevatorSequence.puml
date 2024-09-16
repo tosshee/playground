@@ -1,0 +1,16 @@
+@startuml
+actor User
+participant "ElevatorController" as Controller
+participant "ElevatorContext" as Context
+participant "ElevatorState" as State
+
+User -> Controller : Input(event)
+Controller -> Context : triggerEvent(event)
+Context -> State : handleEvent(event)
+alt event leads to state change
+    State -> State : exit_state()
+    State -> Context : newState
+    Context -> State : enter_state()
+end
+
+@enduml

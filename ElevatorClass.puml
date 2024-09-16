@@ -1,0 +1,62 @@
+@startuml
+
+class "ElevatorState" {
+    # name: String
+    + enterState()
+    + exitState()
+    + handleEvent(event: String)
+}
+
+class "IdleAtFirstFloor" {
+    + handleEvent(event: String)
+}
+
+class "IdleAtSecondFloor" {
+    + handleEvent(event: String)
+}
+
+class "OpenAtFirstFloor" {
+    + handleEvent(event: String)
+}
+
+class "OpenAtSecondFloor" {
+    + handleEvent(event: String)
+}
+
+class "MovingUp" {
+    + handleEvent(event: String)
+}
+
+class "MovingDown" {
+    + handleEvent(event: String)
+}
+
+class "ElevatorContext" {
+    - currentState: ElevatorState
+    + setState(state: ElevatorState)
+    + getState(): ElevatorState
+    + triggerEvent(event: String)
+}
+
+class "StateTransition" {
+    + evaluate(currentState: ElevatorState, event: String): ElevatorState
+}
+
+class "ElevatorController" {
+    - context: ElevatorContext
+    + handleButtonPress(buttonId: String)
+    + handleSensorTrigger(sensorId: String)
+}
+
+ElevatorState <|-- "IdleAtFirstFloor"
+ElevatorState <|-- "IdleAtSecondFloor"
+ElevatorState <|-- "OpenAtFirstFloor"
+ElevatorState <|-- "OpenAtSecondFloor"
+ElevatorState <|-- "MovingUp"
+ElevatorState <|-- "MovingDown"
+
+"ElevatorContext" *-- "ElevatorState"
+"ElevatorContext" o-- "StateTransition"
+"ElevatorController" --> "ElevatorContext"
+
+@enduml
