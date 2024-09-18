@@ -1,0 +1,34 @@
+#elevator {
+    width: 200px;
+    height: 400px;
+    border: 2px solid black;
+    position: relative;
+    margin: 20px auto;
+    background-color: lightgray;
+}
+
+#cart {
+    width: 100%;
+    height: 50%;
+    background-color: darkgray;
+    position: absolute;
+    bottom: 0;  /* Start at the first floor (bottom) */
+    transition: bottom 2s ease;  /* Smooth transition for up/down movement */
+}
+
+.doors {
+    width: 100%;
+    height: 50%;
+    background-color: grey;
+    position: absolute;
+    transition: width 2s;
+}
+
+#first-floor-doors {
+    bottom: 0; /* Positioned at the bottom for the first floor */
+}
+
+#second-floor-doors {
+    bottom: 50%; /* Positioned at the 50% height for the second floor */
+}
+

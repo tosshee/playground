@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div id="elevator">
+    <div id="cart"></div>
+    <div id="first-floor-doors" class="doors"></div> <!-- Doors at the first floor -->
+    <div id="second-floor-doors" class="doors"></div> <!-- Doors at the second floor -->
+</div>
+
+<div id="controls">
+    <button class="control-button" onclick="moveElevator('up')">Up</button>
+    <button class="control-button" onclick="moveElevator('down')">Down</button>
+    <button class="control-button" onclick="controlDoor('open')">Open</button>
+    <button class="control-button" onclick="controlDoor('close')">Close</button>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
+
